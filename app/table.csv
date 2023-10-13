@@ -1,3 +1,5 @@
-key,type
-key_1,text
-key_2,text
+key,type,len,pk,required,comment
+user_id,varchar,15,〇,〇,ユーザID
+message_id,varchar,15,〇,〇,メッセージID
+creation_datetime,date,,,〇,作成日時
+memo,text,,,,メモ
