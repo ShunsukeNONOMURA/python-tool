@@ -4,8 +4,8 @@ import pandas as pd
 class Converter:
     @staticmethod
     def df2ddl(df, table_name, table_pkay_name):
-        
-        ddl = f'CREATE TABLE {table_name} (\n'
+        ddl = ''
+        ddl += f'CREATE TABLE {table_name} (\n'
 
         # Table
         for index,item in df.iterrows():
@@ -24,7 +24,11 @@ class Converter:
         ddl_comments = ''
         for index,item in df.iterrows():
             ddl_comments += f"COMMENT ON COLUMN {table_name}.{item.key} IS '{item.comment}';\n" if not pd.isnull(item.comment) else ''
-        ddl += ddl_comments
+        ddl += '\n' + ddl_comments
 
         return ddl
     
+    @staticmethod
+    def df2df_records(df):
+        columns = [item.key for index,item in df.iterrows()]
+        return pd.DataFrame(columns = columns)

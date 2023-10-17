@@ -16,5 +16,12 @@ ddl = Converter.df2ddl(
     table_name,
     table_pkay_name,
 )
-
 print(ddl)
+
+# export records csv
+df_records = Converter.df2df_records(
+    df,
+)
+print(df_records)
+path_records_csv = 'table_records.csv'
+df_records.to_csv(path_records_csv, index=False)
